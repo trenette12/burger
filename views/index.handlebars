@@ -3,10 +3,15 @@
 <ul>
   {{#each burger}}
   	<li>
-  	   <p>ID: {{this.id}}</p>
-       <p>Burger: {{this.burger_name}}</p>
-       <p>Devoured: {{this.devoured}}</p>
-  	</li>
+  	   {{this.burger_name}}
+    </li>
+  {{/each}}
+</ul>
+<ul>
+  {{#each burger}}
+    {{#if this.devoured}}
+      <li>{{this.burger_name}}</li>
+    {{/if}}
   {{/each}}
 </ul>
 <form action="/" method="POST">

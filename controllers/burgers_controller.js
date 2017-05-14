@@ -1,8 +1,7 @@
 var express = require("express");
-var burger = require("../models/burger.js");
 var app = express();
 var router = express.Router();
-
+var burger = require("../models/burger.js");
 //Routes for getting, creating and updating the Burger Object//
 router.get("/", function(req, res) {
   burger.selectAll(function(data){

@@ -10,11 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+app.use(methodOverride("_method"));
+
 //Requiring and setting Handlebars//
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-app.use(methodOverride("_method"));
 
 //Using the static directory to hold all assets//
 app.use(express.static("app/public"));
