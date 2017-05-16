@@ -23,7 +23,7 @@ app.use(express.static("app/public"));
 //Requiring the routes in the burgers controller file//
 var routes = require("./controllers/burgers_controller.js");
 
-app.use("/", routes);
+app.use('/', routes);
 // Server is listening//
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);

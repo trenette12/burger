@@ -1,20 +1,34 @@
-<h1>Are you hungry?</h1>
-<h3>Choose a Hamburger</h3>
-<ul>
-  {{#each burger}}
-  	<li>
-  	   {{this.burger_name}}
-    </li>
-  {{/each}}
-</ul>
-<ul>
-  {{#each burger}}
-    {{#if this.devoured}}
-      <li>{{this.burger_name}}</li>
-    {{/if}}
-  {{/each}}
-</ul>
-<form action="/" method="POST">
-	<textarea type="text" name="event"></textarea>
-	<button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Burgers</title>
+    <link href="burger_style.css" type="text/css" rel="stylesheet"
+  </head>
+  <body>
+    <div class="container">
+      <div class="#background">
+          <h1>Are you hungry?</h1>
+          <h3>Choose a Hamburger</h3>
+          <ul>
+            {{#each burger}}
+            	<li>
+            	   {{this.burger_name}}
+              </li>
+            {{/each}}
+          </ul>
+          <ul>
+            {{#each burger}}
+              {{#if this.devoured}}
+                <li>{{this.burger_name}}</li>
+              {{/if}}
+            {{/each}}
+          </ul>
+          <form action="/" method="POST">
+          	<textarea type="text" name="event"></textarea>
+          	<button type="submit">Submit</button>
+          </form>
+      </div>
+    </div>
+  </body>
+</html>
