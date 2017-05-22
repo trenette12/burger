@@ -3,32 +3,38 @@ var app = express();
 var router = express.Router();
 var burger = require("../models/burger.js");
 //Routes for getting, creating and updating the Burger Object//
+
+// orms.selectAll("*", "burgers");
+// orms.insertOne(4, "Philly Cheesesteak Burger", true);
+// orms.updateOne("burgers", "burger_name", "Veggie Burger", "id", 2);
+
+
 router.get("/", function(req, res) {
-  burger.selectAll(function(data){
-    var burgerObject = {
-      burger: data
-    };
-    console.log(burgerObject);
-    res.render("index", burgerObject);
-  });
+    res.redirect('/burgers')
 });
 
-router.post("/", function(req, res) {
-  burger.insertOne(function(data){
-    var burgerObjectTwo = {
-      burger: data
-    };
-    res.redirect("/");
-  });
+router.get("/burgers", function(req, res) {
+    burger.all(function(data){
+      var burgerObjectOne = {
+        burgers: data
+      }
+      console.log(burgerObjectOne);
+      res.render("index", burgerObjectOne);
+    });
 });
 
-router.put("/:id", function(req,res) {
-  burger.updateOne(function(data){
-    var burgerObjectThree = {
-      burger: data
-    };
-    res.redirect("/");
-  });
+router.post("/burgers/create", function(req, res) {
+  burger.create(['burger_name'], [req.body.burger_name], function(data){
+		res.redirect('/burgers')
+	});
+});
+
+router.put("/burgers/update/:id", function(req,res) {
+    var burgerid = 'id = ' + req.params.id;
+  	console.log('burger id ', burgerid);
+  	burger.update({'devoured': req.body.devoured}, burgerid, function(data){
+  		res.redirect('/burgers');
+  	});
 });
 
 module.exports = router;
